@@ -35,6 +35,14 @@ namespace escape4u
             _verticalSpeed = movementSpeed.y;
             _movementSpeed.x = movementSpeed.x;
             _movementSpeed.y = _rig.velocityY;
+
+            if(movementSpeed.x > 0){
+                transform.rotation = Quaternion.Euler(0,0,0);
+            }
+
+            else if(movementSpeed.x < 0){
+                transform.rotation = Quaternion.Euler(0,180,0);
+            }
         }
 
         public void Jump()
