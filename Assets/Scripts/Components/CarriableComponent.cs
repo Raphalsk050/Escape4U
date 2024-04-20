@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +10,12 @@ namespace escape4u
         {
             base.ExecuteAction_internal();
         }
-        
+
+        private void Update()
+        {
+            
+        }
+
         public override void OnBeginInteract(Interactor instigator)
         {
             base.OnBeginInteract(instigator);

@@ -7,7 +7,7 @@ namespace escape4u
     {
         public UnityEvent OnStartInteract = new UnityEvent();
         public UnityEvent OnEndInteract = new UnityEvent();
-
+        
         protected Interactor Instigator;
         protected InteractableState CurrentInteractableState;
 
@@ -21,12 +21,14 @@ namespace escape4u
             Instigator = instigator;
             ChangeInteractableState(InteractableState.INTERACTING);
             OnStartInteract.Invoke();
+            
         }
 
         public virtual void OnFinishInteract()
         {
             OnEndInteract.Invoke();
             ChangeInteractableState(InteractableState.IDLE);
+            Instigator = null;
         }
 
         public InteractableState GetInteractableState()

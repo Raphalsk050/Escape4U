@@ -6,6 +6,10 @@ namespace escape4u
     public class Interactor : Component
     {
         public float InteractorRadius = 1f;
+        public float InteractionDistance { get => _interactionDistance; }
+
+
+        private float _interactionDistance = 0.2f;
         private Collider2D[] _colliders;
 
         protected override void ExecuteAction_internal()
