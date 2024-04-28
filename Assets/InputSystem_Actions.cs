@@ -324,7 +324,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""f2e9ba44-c423-42a7-ad56-f20975884794"",
                     ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press(pressPoint=0.1,behavior=2)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Sprint"",

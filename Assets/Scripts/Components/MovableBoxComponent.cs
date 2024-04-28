@@ -7,6 +7,7 @@ namespace escape4u
     public class MovableBoxComponent : InteractableComponent
     {
         private float _initialInteractionDistance;
+        private Vector3 _interactionForwardVector;
         protected override void ExecuteAction_internal()
         {
             base.ExecuteAction_internal();
@@ -14,13 +15,13 @@ namespace escape4u
 
         private void Update()
         {
-            if (GetInteractableState() == InteractableState.INTERACTING && Instigator)
+            if (GetInteractableState() == InteractableState.INTERACTING && Instigator && Activated)
             {
                 var instigatorTransform = Instigator.transform;
                 var boundingBox = gameObject.GetComponent<Collider2D>().bounds;
                 var boundsSize = boundingBox.size;
                 
-                var newPosition = instigatorTransform.position + instigatorTransform.right * (_initialInteractionDistance);
+                var newPosition = instigatorTransform.position + _interactionForwardVector * (_initialInteractionDistance);
                 var currentPosition = transform.position;
                 transform.position = new Vector3(newPosition.x, currentPosition.y, currentPosition.z);
             }
@@ -29,8 +30,10 @@ namespace escape4u
         public override void OnBeginInteract(Interactor instigator)
         {
             base.OnBeginInteract(instigator);
-            _initialInteractionDistance = Vector2.Distance(instigator.transform.position, transform.position);
-            var instigadorTransform = instigator.gameObject.transform;
+            _initialInteractionDistance = Vector2.Distance(instigator.transform.position, transform.position) * 1.1f;
+            var instigatorTransform = instigator.gameObject.transform;
+            _interactionForwardVector = ((transform.position.x - instigator.transform.position.x) * instigatorTransform.right).normalized;
+            //_interactionForwardVector = instigator.InteractorLocation * instigatorTransform.right;
         }
 
         public override void OnFinishInteract()

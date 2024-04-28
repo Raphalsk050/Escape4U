@@ -11,6 +11,7 @@ namespace escape4u
         {
             base.Awake();
             _interactor = GetComponent<Interactor>();
+            _interactor.SetController((PlayerController)GetController);
             interactWithObject.AddListener(_interactor.ExecuteAction);
         }
     }

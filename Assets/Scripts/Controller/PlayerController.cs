@@ -1,17 +1,29 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace escape4u
 {
     public class PlayerController : Controller
     {
+        public UnityEvent<bool> OnCrouch;
+        public UnityEvent<bool> OnInteract;
+        public UnityEvent<bool> OnJump;
+        public UnityEvent<bool> onSprint;
+        
         private InputSystem_Actions _actionMap;
         private Vector2 _movementSpeed = Vector2.zero;
         private float _verticalInput;
         private Actor _owner;
         private bool _receivingInput;
-        
+        private bool _crouch;
+
+        public bool GetCrouch
+        {
+            get => _crouch;
+        }
+
         private void Awake()
         {
             _owner = GetOwner();
@@ -39,7 +51,9 @@ namespace escape4u
 
         protected override void Crouch()
         {
-            possessedCharacter.Crouch();
+            _crouch = !_crouch;
+            possessedCharacter.Crouch(_crouch);
+            OnCrouch.Invoke(_crouch);
         }
 
         protected override void Interact()
@@ -50,6 +64,7 @@ namespace escape4u
         private void Sprint(InputAction.CallbackContext context)
         {
             var sprinting = context.ReadValue<float>();
+            onSprint.Invoke(sprinting > 0);
             possessedCharacter.Sprint(sprinting > 0);
         }
     }

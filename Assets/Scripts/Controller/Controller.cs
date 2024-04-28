@@ -14,6 +14,7 @@ namespace escape4u
         public virtual void PossessCharacter(Character characterToPosses)
         {
             possessedCharacter = characterToPosses;
+            possessedCharacter.OnPossessed(this);
         }
         
         protected virtual void Move()
