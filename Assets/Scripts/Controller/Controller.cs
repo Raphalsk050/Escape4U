@@ -1,9 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace escape4u
 {
     public class Controller : MonoBehaviour
     {
+        public UnityEvent<bool> OnCrouch;
+        public UnityEvent<bool> OnInteract;
+        public UnityEvent<bool> OnJump;
+        public UnityEvent<bool> onSprint;
+        
         public Character possessedCharacter;
         
         protected virtual Actor GetOwner()

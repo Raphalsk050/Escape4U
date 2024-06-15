@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 namespace escape4u{
     public enum NormalStates{
         IDLE,
@@ -27,4 +29,6 @@ namespace escape4u{
         CARRING,
         DRAGGING
     }
+
+    public delegate void MovementDelegate(Vector2 movementVelocity);
 }

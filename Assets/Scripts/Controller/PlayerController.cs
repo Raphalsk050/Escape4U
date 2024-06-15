@@ -7,11 +7,6 @@ namespace escape4u
 {
     public class PlayerController : Controller
     {
-        public UnityEvent<bool> OnCrouch;
-        public UnityEvent<bool> OnInteract;
-        public UnityEvent<bool> OnJump;
-        public UnityEvent<bool> onSprint;
-        
         private InputSystem_Actions _actionMap;
         private Vector2 _movementSpeed = Vector2.zero;
         private float _verticalInput;

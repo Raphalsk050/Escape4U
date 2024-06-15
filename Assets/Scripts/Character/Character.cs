@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace escape4u
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
     public class Character : Actor
     {
         public UnityEvent interactWithObject;
@@ -15,8 +15,15 @@ namespace escape4u
         [SerializeField] protected float sprintModifier = 1.5f;
         [SerializeField] protected float crouchModifier = 0.5f;
         [SerializeField] protected float jumpForce = 810f;
-        [SerializeField] protected LayerMask groundLayer;
         
+        [SerializeField] protected ContactFilter2D contactFilter2D = new ContactFilter2D()
+        {
+            useLayerMask = true, 
+            layerMask = 6,
+            minNormalAngle = 90f,
+            maxNormalAngle = 90f
+        };
+
         private Vector2 _movementSpeed;
         private float _currentMovementSpeed = 0f;
         private Rigidbody2D _rig;
@@ -45,7 +52,7 @@ namespace escape4u
 
         private void Update()
         {
-            _isGrounded = _rig.IsTouchingLayers(groundLayer);
+            _isGrounded = _rig.IsTouching(contactFilter2D);
         }
 
         protected virtual void FixedUpdate()

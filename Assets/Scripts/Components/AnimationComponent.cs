@@ -11,7 +11,7 @@ namespace escape4u{
         [SerializeField] private string _interactParameter;
         [SerializeField] private string _pushParameter;
         
-        public PlayerController controller;
+        public Controller controller;
         private CharacterSubStates _characterSubState;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;

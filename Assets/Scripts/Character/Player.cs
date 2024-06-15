@@ -7,9 +7,8 @@ namespace escape4u
     {
         private Interactor _interactor;
         
-        protected override void Awake()
+        protected void Start()
         {
-            base.Awake();
             _interactor = GetComponent<Interactor>();
             _interactor.SetController((PlayerController)GetController);
             interactWithObject.AddListener(_interactor.ExecuteAction);
