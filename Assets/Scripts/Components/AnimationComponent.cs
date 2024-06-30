@@ -10,6 +10,7 @@ namespace escape4u{
         [SerializeField] private string _sprintParameter;
         [SerializeField] private string _interactParameter;
         [SerializeField] private string _pushParameter;
+        [SerializeField] private string _jumpParameter;
         
         public Controller controller;
         private CharacterSubStates _characterSubState;

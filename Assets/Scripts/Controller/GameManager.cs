@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace escape4u
 {
@@ -10,6 +11,18 @@ namespace escape4u
         void Awake()
         {
             controller.PossessCharacter(player);
+        }
+
+        public void StartGame(){
+            //SceneManager.LoadScene("MainGame");
+        }
+
+        public void RestartGame(){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void KillPlayer(){
+            RestartGame();
         }
     }
 }
