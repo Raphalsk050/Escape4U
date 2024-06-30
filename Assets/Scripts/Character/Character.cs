@@ -8,7 +8,7 @@ namespace escape4u
     [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
     public class Character : Actor
     {
-        public UnityEvent interactWithObject;
+        [HideInInspector] public UnityEvent interactWithObject;
         public UnityEvent<float> characterSpeedChanged;
         
         [SerializeField] protected float walkSpeed = 6f;
