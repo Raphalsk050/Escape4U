@@ -146,8 +146,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 6818239589509320238, guid: fecff23941f2d854fa5636963581cf1d, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -2395378839180262644, guid: 3e28a1c4d24527642bcc05e08c16a9d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   _sprintParameter: Sprint
   _interactParameter: Interact
   _pushParameter: Push
+  _jumpParameter: 
   controller: {fileID: 1558086501926139678}
 --- !u!114 &3337969465551634648
 MonoBehaviour:
